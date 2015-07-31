@@ -1,0 +1,22 @@
+PODS:
+  - Alamofire (1.2.3)
+  - HanekeSwift (0.9.1)
+  - MBProgressHUD (0.9.1)
+  - PageMenu (1.2.7)
+  - SwiftyJSON (2.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - HanekeSwift
+  - MBProgressHUD
+  - PageMenu
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  PageMenu: 290f46c000d4bbb301a48cdb541f32e23b66a503
+  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
+
+COCOAPODS: 0.37.2

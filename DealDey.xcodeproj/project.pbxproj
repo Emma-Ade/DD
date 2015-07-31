@@ -1,0 +1,628 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43CD58E11B6A386300E25DAA /* UIViewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD58E01B6A386300E25DAA /* UIViewBorder.swift */; };
+		5339016B1B384173009571F0 /* Deals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339016A1B384173009571F0 /* Deals.swift */; };
+		5339016E1B384275009571F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339016D1B384275009571F0 /* ViewController.swift */; };
+		533901701B384297009571F0 /* DealListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5339016F1B384297009571F0 /* DealListTableViewCell.swift */; };
+		533901721B3842B7009571F0 /* DealListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533901711B3842B7009571F0 /* DealListTableViewCell.xib */; };
+		533901761B38442C009571F0 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533901751B38442C009571F0 /* ApiController.swift */; };
+		5363E5A61B375BFA00C465F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5363E5A51B375BFA00C465F4 /* AppDelegate.swift */; };
+		5363E5AB1B375BFA00C465F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5363E5A91B375BFA00C465F4 /* Main.storyboard */; };
+		5363E5AD1B375BFA00C465F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5363E5AC1B375BFA00C465F4 /* Images.xcassets */; };
+		5363E5B01B375BFA00C465F4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5363E5AE1B375BFA00C465F4 /* LaunchScreen.xib */; };
+		5363E5BC1B375BFA00C465F4 /* DealDeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5363E5BB1B375BFA00C465F4 /* DealDeyTests.swift */; };
+		5363E5C91B37649600C465F4 /* Objective-CBridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5363E5C81B37649600C465F4 /* Objective-CBridgingHeader.m */; };
+		5363E5CB1B37668100C465F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5363E5CA1B37668100C465F4 /* Constants.swift */; };
+		5363E5D61B37730800C465F4 /* DealListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5363E5D41B37730800C465F4 /* DealListTableViewController.swift */; };
+		5363E5D71B37730800C465F4 /* DealListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5363E5D51B37730800C465F4 /* DealListTableViewController.xib */; };
+		5386330D1B388C5C007DF045 /* PullToRefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538633091B388C5C007DF045 /* PullToRefreshConst.swift */; };
+		5386330E1B388C5C007DF045 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5386330A1B388C5C007DF045 /* PullToRefreshView.swift */; };
+		5386330F1B388C5C007DF045 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5386330B1B388C5C007DF045 /* UIScrollViewExtension.swift */; };
+		53B1D3571B395CBC00340A21 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B1D3561B395CBC00340A21 /* Extensions.swift */; };
+		53B1D3591B39788900340A21 /* DealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B1D3581B39788900340A21 /* DealDetailViewController.swift */; };
+		53B1D35D1B39B3DD00340A21 /* DecodeHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B1D35C1B39B3DD00340A21 /* DecodeHTML.swift */; };
+		E590D45484982DB8C528C2D8 /* Pods_DealDey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE6FB2180BBDACDD5C42FE7 /* Pods_DealDey.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5363E5B61B375BFA00C465F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5363E5981B375BFA00C465F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5363E59F1B375BFA00C465F4;
+			remoteInfo = DealDey;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FCFFDF2B617787C4127E0D0 /* Pods-DealDey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DealDey.release.xcconfig"; path = "Pods/Target Support Files/Pods-DealDey/Pods-DealDey.release.xcconfig"; sourceTree = "<group>"; };
+		43CD58E01B6A386300E25DAA /* UIViewBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBorder.swift; sourceTree = "<group>"; };
+		5339016A1B384173009571F0 /* Deals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Deals.swift; path = Model/Deals.swift; sourceTree = "<group>"; };
+		5339016D1B384275009571F0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controller/ViewController.swift; sourceTree = "<group>"; };
+		5339016F1B384297009571F0 /* DealListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DealListTableViewCell.swift; path = CustomCell/DealListTableViewCell.swift; sourceTree = "<group>"; };
+		533901711B3842B7009571F0 /* DealListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DealListTableViewCell.xib; path = View/DealListTableViewCell.xib; sourceTree = "<group>"; };
+		533901751B38442C009571F0 /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiController.swift; path = Controller/ApiController.swift; sourceTree = "<group>"; };
+		5363E5A01B375BFA00C465F4 /* DealDey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealDey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5363E5A41B375BFA00C465F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5363E5A51B375BFA00C465F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5363E5AA1B375BFA00C465F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5363E5AC1B375BFA00C465F4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5363E5AF1B375BFA00C465F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5363E5B51B375BFA00C465F4 /* DealDeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DealDeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5363E5BA1B375BFA00C465F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5363E5BB1B375BFA00C465F4 /* DealDeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDeyTests.swift; sourceTree = "<group>"; };
+		5363E5C71B37649600C465F4 /* DealDey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DealDey-Bridging-Header.h"; sourceTree = "<group>"; };
+		5363E5C81B37649600C465F4 /* Objective-CBridgingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Objective-CBridgingHeader.m"; sourceTree = "<group>"; };
+		5363E5CA1B37668100C465F4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5363E5D41B37730800C465F4 /* DealListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DealListTableViewController.swift; path = Controller/DealListTableViewController.swift; sourceTree = "<group>"; };
+		5363E5D51B37730800C465F4 /* DealListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DealListTableViewController.xib; path = Controller/DealListTableViewController.xib; sourceTree = "<group>"; };
+		538633091B388C5C007DF045 /* PullToRefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshConst.swift; sourceTree = "<group>"; };
+		5386330A1B388C5C007DF045 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		5386330B1B388C5C007DF045 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		53B1D3561B395CBC00340A21 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		53B1D3581B39788900340A21 /* DealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DealDetailViewController.swift; path = Controller/DealDetailViewController.swift; sourceTree = "<group>"; };
+		53B1D35C1B39B3DD00340A21 /* DecodeHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeHTML.swift; sourceTree = "<group>"; };
+		6FE6FB2180BBDACDD5C42FE7 /* Pods_DealDey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DealDey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4B1E50697D9799CB89FE8D0 /* Pods-DealDey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DealDey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DealDey/Pods-DealDey.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5363E59D1B375BFA00C465F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E590D45484982DB8C528C2D8 /* Pods_DealDey.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5363E5B21B375BFA00C465F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		301635654AEDCD0B03BC6995 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4B1E50697D9799CB89FE8D0 /* Pods-DealDey.debug.xcconfig */,
+				2FCFFDF2B617787C4127E0D0 /* Pods-DealDey.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		35A6E32B9413E6453A6A6A8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FE6FB2180BBDACDD5C42FE7 /* Pods_DealDey.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		438A6CA51B6B7A4C00CEDF62 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				53B1D35C1B39B3DD00340A21 /* DecodeHTML.swift */,
+				53B1D3561B395CBC00340A21 /* Extensions.swift */,
+				43CD58E01B6A386300E25DAA /* UIViewBorder.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		533901671B384102009571F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5339016A1B384173009571F0 /* Deals.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5339016C1B3841DC009571F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5339016D1B384275009571F0 /* ViewController.swift */,
+				5363E5D41B37730800C465F4 /* DealListTableViewController.swift */,
+				533901751B38442C009571F0 /* ApiController.swift */,
+				53B1D3581B39788900340A21 /* DealDetailViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		533901731B3842CB009571F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5363E5D51B37730800C465F4 /* DealListTableViewController.xib */,
+				5363E5A91B375BFA00C465F4 /* Main.storyboard */,
+				533901711B3842B7009571F0 /* DealListTableViewCell.xib */,
+				5363E5AE1B375BFA00C465F4 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		533901741B3842DC009571F0 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				5339016F1B384297009571F0 /* DealListTableViewCell.swift */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		5363E5971B375BFA00C465F4 = {
+			isa = PBXGroup;
+			children = (
+				5363E5A21B375BFA00C465F4 /* DealDey */,
+				5363E5B81B375BFA00C465F4 /* DealDeyTests */,
+				5363E5A11B375BFA00C465F4 /* Products */,
+				301635654AEDCD0B03BC6995 /* Pods */,
+				35A6E32B9413E6453A6A6A8B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5363E5A11B375BFA00C465F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5363E5A01B375BFA00C465F4 /* DealDey.app */,
+				5363E5B51B375BFA00C465F4 /* DealDeyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5363E5A21B375BFA00C465F4 /* DealDey */ = {
+			isa = PBXGroup;
+			children = (
+				5363E5A51B375BFA00C465F4 /* AppDelegate.swift */,
+				5339016C1B3841DC009571F0 /* Controller */,
+				533901671B384102009571F0 /* Model */,
+				533901731B3842CB009571F0 /* View */,
+				533901741B3842DC009571F0 /* CustomCell */,
+				5363E5AC1B375BFA00C465F4 /* Images.xcassets */,
+				5363E5A31B375BFA00C465F4 /* Supporting Files */,
+				538632FC1B388524007DF045 /* NoPodLibrary */,
+				5363E5C81B37649600C465F4 /* Objective-CBridgingHeader.m */,
+				5363E5C71B37649600C465F4 /* DealDey-Bridging-Header.h */,
+				5363E5CA1B37668100C465F4 /* Constants.swift */,
+				438A6CA51B6B7A4C00CEDF62 /* Extensions */,
+			);
+			path = DealDey;
+			sourceTree = "<group>";
+		};
+		5363E5A31B375BFA00C465F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5363E5A41B375BFA00C465F4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5363E5B81B375BFA00C465F4 /* DealDeyTests */ = {
+			isa = PBXGroup;
+			children = (
+				5363E5BB1B375BFA00C465F4 /* DealDeyTests.swift */,
+				5363E5B91B375BFA00C465F4 /* Supporting Files */,
+			);
+			path = DealDeyTests;
+			sourceTree = "<group>";
+		};
+		5363E5B91B375BFA00C465F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5363E5BA1B375BFA00C465F4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		538632FC1B388524007DF045 /* NoPodLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				538632FF1B388C23007DF045 /* PullToRefresh */,
+			);
+			name = NoPodLibrary;
+			sourceTree = "<group>";
+		};
+		538632FF1B388C23007DF045 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				538633091B388C5C007DF045 /* PullToRefreshConst.swift */,
+				5386330A1B388C5C007DF045 /* PullToRefreshView.swift */,
+				5386330B1B388C5C007DF045 /* UIScrollViewExtension.swift */,
+			);
+			name = PullToRefresh;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5363E59F1B375BFA00C465F4 /* DealDey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5363E5BF1B375BFA00C465F4 /* Build configuration list for PBXNativeTarget "DealDey" */;
+			buildPhases = (
+				1F771FCE1DEC9A6537F74814 /* Check Pods Manifest.lock */,
+				5363E59C1B375BFA00C465F4 /* Sources */,
+				5363E59D1B375BFA00C465F4 /* Frameworks */,
+				5363E59E1B375BFA00C465F4 /* Resources */,
+				AFE6A702051D820DDB789E0A /* Embed Pods Frameworks */,
+				10510025EE44C8FC3E4CE6E1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DealDey;
+			productName = DealDey;
+			productReference = 5363E5A01B375BFA00C465F4 /* DealDey.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5363E5B41B375BFA00C465F4 /* DealDeyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5363E5C21B375BFA00C465F4 /* Build configuration list for PBXNativeTarget "DealDeyTests" */;
+			buildPhases = (
+				5363E5B11B375BFA00C465F4 /* Sources */,
+				5363E5B21B375BFA00C465F4 /* Frameworks */,
+				5363E5B31B375BFA00C465F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5363E5B71B375BFA00C465F4 /* PBXTargetDependency */,
+			);
+			name = DealDeyTests;
+			productName = DealDeyTests;
+			productReference = 5363E5B51B375BFA00C465F4 /* DealDeyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5363E5981B375BFA00C465F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Tinkona Technologies";
+				TargetAttributes = {
+					5363E59F1B375BFA00C465F4 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					5363E5B41B375BFA00C465F4 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 5363E59F1B375BFA00C465F4;
+					};
+				};
+			};
+			buildConfigurationList = 5363E59B1B375BFA00C465F4 /* Build configuration list for PBXProject "DealDey" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5363E5971B375BFA00C465F4;
+			productRefGroup = 5363E5A11B375BFA00C465F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5363E59F1B375BFA00C465F4 /* DealDey */,
+				5363E5B41B375BFA00C465F4 /* DealDeyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5363E59E1B375BFA00C465F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5363E5AB1B375BFA00C465F4 /* Main.storyboard in Resources */,
+				533901721B3842B7009571F0 /* DealListTableViewCell.xib in Resources */,
+				5363E5B01B375BFA00C465F4 /* LaunchScreen.xib in Resources */,
+				5363E5AD1B375BFA00C465F4 /* Images.xcassets in Resources */,
+				5363E5D71B37730800C465F4 /* DealListTableViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5363E5B31B375BFA00C465F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10510025EE44C8FC3E4CE6E1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DealDey/Pods-DealDey-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F771FCE1DEC9A6537F74814 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AFE6A702051D820DDB789E0A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DealDey/Pods-DealDey-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5363E59C1B375BFA00C465F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5363E5C91B37649600C465F4 /* Objective-CBridgingHeader.m in Sources */,
+				5363E5D61B37730800C465F4 /* DealListTableViewController.swift in Sources */,
+				5363E5A61B375BFA00C465F4 /* AppDelegate.swift in Sources */,
+				5386330D1B388C5C007DF045 /* PullToRefreshConst.swift in Sources */,
+				43CD58E11B6A386300E25DAA /* UIViewBorder.swift in Sources */,
+				5386330F1B388C5C007DF045 /* UIScrollViewExtension.swift in Sources */,
+				5386330E1B388C5C007DF045 /* PullToRefreshView.swift in Sources */,
+				5339016B1B384173009571F0 /* Deals.swift in Sources */,
+				53B1D3571B395CBC00340A21 /* Extensions.swift in Sources */,
+				533901761B38442C009571F0 /* ApiController.swift in Sources */,
+				53B1D35D1B39B3DD00340A21 /* DecodeHTML.swift in Sources */,
+				5339016E1B384275009571F0 /* ViewController.swift in Sources */,
+				533901701B384297009571F0 /* DealListTableViewCell.swift in Sources */,
+				53B1D3591B39788900340A21 /* DealDetailViewController.swift in Sources */,
+				5363E5CB1B37668100C465F4 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5363E5B11B375BFA00C465F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5363E5BC1B375BFA00C465F4 /* DealDeyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5363E5B71B375BFA00C465F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5363E59F1B375BFA00C465F4 /* DealDey */;
+			targetProxy = 5363E5B61B375BFA00C465F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5363E5A91B375BFA00C465F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5363E5AA1B375BFA00C465F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5363E5AE1B375BFA00C465F4 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5363E5AF1B375BFA00C465F4 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5363E5BD1B375BFA00C465F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5363E5BE1B375BFA00C465F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5363E5C01B375BFA00C465F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4B1E50697D9799CB89FE8D0 /* Pods-DealDey.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = DealDey/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DealDey/DealDey-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5363E5C11B375BFA00C465F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FCFFDF2B617787C4127E0D0 /* Pods-DealDey.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = DealDey/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DealDey/DealDey-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		5363E5C31B375BFA00C465F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DealDeyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DealDey.app/DealDey";
+			};
+			name = Debug;
+		};
+		5363E5C41B375BFA00C465F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DealDeyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DealDey.app/DealDey";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5363E59B1B375BFA00C465F4 /* Build configuration list for PBXProject "DealDey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5363E5BD1B375BFA00C465F4 /* Debug */,
+				5363E5BE1B375BFA00C465F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5363E5BF1B375BFA00C465F4 /* Build configuration list for PBXNativeTarget "DealDey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5363E5C01B375BFA00C465F4 /* Debug */,
+				5363E5C11B375BFA00C465F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5363E5C21B375BFA00C465F4 /* Build configuration list for PBXNativeTarget "DealDeyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5363E5C31B375BFA00C465F4 /* Debug */,
+				5363E5C41B375BFA00C465F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5363E5981B375BFA00C465F4 /* Project object */;
+}
