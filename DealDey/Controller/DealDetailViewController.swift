@@ -85,17 +85,11 @@ class DealDetailViewController: UIViewController, UIWebViewDelegate {
         
       
         var webViewtHeight : NSString = webView.stringByEvaluatingJavaScriptFromString("document.height")!
-        updateConstraint(webView, height: CGFloat((webViewtHeight).floatValue))
+        var constraint = NSLayoutConstraint(item: webView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant:  CGFloat((webViewtHeight).floatValue))
+        self.view.addConstraint(constraint)
       
     }
 
-    
-    private func updateConstraint(view: UIWebView, height: CGFloat)  {
-        
-        var constraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: height)
-        self.view.addConstraint(constraint)
-        
-    }
     
     private func loadDetailView(detail: NSDictionary) {
         
