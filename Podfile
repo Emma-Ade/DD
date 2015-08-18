@@ -9,7 +9,8 @@ pod 'PageMenu'
 use_frameworks!
 pod 'HanekeSwift'
 pod 'MBProgressHUD'
-
+pod 'Fabric'
+pod 'Crashlytics'
 end
 
 target 'DealDeyTests' do

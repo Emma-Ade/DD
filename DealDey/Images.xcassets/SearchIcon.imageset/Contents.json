@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "common_search_lookup_-24.png"
+      "filename" : "search_icon@x1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "1434951008_common_search_lookup_.png"
+      "filename" : "search_icon@x2.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "common_search_lookup_-128.png"
+      "filename" : "search_icon@x3.png"
     }
   ],
   "info" : {

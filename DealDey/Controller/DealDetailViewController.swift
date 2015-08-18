@@ -12,11 +12,10 @@ import MBProgressHUD
 
 class DealDetailViewController: UIViewController, UIWebViewDelegate {
 
+    let api = APINetworking()
     var deal:Deals?
-    var api = APIController()
-    var tableView: UITableView!
     var hud: MBProgressHUD!
-    var timer = NSTimer()
+    var selectedDeal: Deals!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var short_title: UILabel!
@@ -25,122 +24,112 @@ class DealDetailViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var save: UILabel!
     @IBOutlet weak var dealImage: UIImageView!
     @IBOutlet weak var discount: UILabel!
-    @IBOutlet weak var highLights: UILabel!
-    @IBOutlet weak var finePrints: UILabel!
-    @IBOutlet weak var detailView: UIView!
-    @IBOutlet weak var details: UILabel!
+    @IBOutlet weak var imageActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var highlightWebView: UIWebView!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var titleInPriceSection: UILabel!
-    
     @IBOutlet weak var descriptionWebView: UIWebView!
-    @IBOutlet weak var dealDetailsHeaderView: UIView!
     @IBOutlet weak var finePirntWebview: UIWebView!
-    
+    @IBOutlet weak var descriptionWebViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var finePrintsWebViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var highlightsWebViewHeight: NSLayoutConstraint!
     @IBOutlet weak var timerLabel: UILabel!
     var count = 0;
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "Deal Detail"
-        //self.tabBarController?.tabBar.hidden = true
     
-        var deal_id = deal?.id
-        self.short_title.text   = self.deal?.short_title
-        self.titleInPriceSection.text = self.deal?.short_title
-        hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        api.getDeal(deal_id!){
-            (response) in
-            self.loadDetailView(response)
+        if let dealId = deal?.id{
             
+            self.short_title.text   = " \(self.deal!.shortTitle)"
+            self.titleInPriceSection.text = self.deal?.shortTitle
+            self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+      
+            self.fetchDealDetails(dealId)
         }
-        
-        dealDetailsHeaderView.addBottomBorderWithHeight(1.0, color: UIColor.grayColor())
-        shareButton.addLeftBorderWithWidth(1.0, color: UIColor.grayColor(), leftOffset: -3.0, topOffset: 0, bottomOffset: 0)
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func fetchDealDetails(dealId: Int){
+        
+        let parameters = ["access_key" : "android-testing"]
+        api.fetchRequest(Constants.Url.Deals+"\(dealId)" , params: parameters){
+            (response) in
+        
+            self.selectedDeal = Deals.DealDetailsFromJSON(response["deal"] as! NSDictionary)
+            self.loadDetailView()
+            
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        let urlString = self.deal?.image
-        if let escapedUrlString = urlString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-
-            var imgURL: NSURL = NSURL(string: escapedUrlString)!
-            dealImage.hnk_setImageFromURL(imgURL)
+        if let urlString = self.deal?.image {
+            
+            if let escapedUrlString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
+                
+                var imgURL: NSURL = NSURL(string: escapedUrlString)!
+                dealImage.hnk_setImageFromURL(imgURL)
+            }
         }
-
     }
     
 
     func webViewDidFinishLoad(webView: UIWebView) {
         
-      
-        var webViewtHeight : NSString = webView.stringByEvaluatingJavaScriptFromString("document.height")!
-        var constraint = NSLayoutConstraint(item: webView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant:  CGFloat((webViewtHeight).floatValue))
-        self.view.addConstraint(constraint)
-      
-    }
-
-    
-    private func loadDetailView(detail: NSDictionary) {
+        let webViewtHeight : NSString = webView.stringByEvaluatingJavaScriptFromString("document.height")!
+        let height = CGFloat((webViewtHeight).floatValue)
         
-        var response      = detail["deal"] as! NSDictionary
-        var highlights  = response["highlights"] as! String 
-        var finePrints  = response["fine_prints"] as! String
-        var description = response["description"] as! String
-        var discountOff = response["percent_discount"] as? String ?? ""
+        switch(webView){
+            
+        case highlightWebView:
+            self.highlightsWebViewHeight.constant = height
+        case finePirntWebview:
+            self.finePrintsWebViewHeight.constant = height
+        case descriptionWebView:
+            self.descriptionWebViewHeight.constant = height
+        default:
+            break;
         
-        hud.hide(true)
-
-        dispatch_async(dispatch_get_main_queue(), {
-           
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            
-            self.soldCount.text     = response["bought_count"]!.stringValue
-            self.listPrice.text     = "₦"+response["list_price"]!.stringValue
-            self.save.text          = "₦"+response["saving"]!.stringValue
-            self.discount.text      = "\(discountOff)%"
-            
-            self.highlightWebView.loadHTMLString("<div style='font-size: 14px;'><p style='border-bottom: 1px solid gray;'> HighLights </p>"+highlights+"</div>", baseURL: nil)
-            self.finePirntWebview.loadHTMLString("<div style='font-size: 14px;'><p style='border-bottom: 1px solid gray;'> Fine Prints </p>"+finePrints+"</div>", baseURL: nil)
-            self.descriptionWebView.loadHTMLString("<div style='font-size: 14px !important;'><p style='border-bottom: 1px solid gray;'> Details </p>"+description+"</div>", baseURL: nil)
-            
-        
-        })
-        
-        if response["show_timer"] as! Bool == true {
-            
-            self.count = response["time_left"] as! Int
-            //println(response["time_left"] )
         }
-      
-        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimerLabel"), userInfo: nil, repeats: true)
+    }
+
+    
+    private func loadDetailView() {
         
+        self.hud.hide(true)
+        
+        self.soldCount.text     = "\(self.selectedDeal.boughtCount!)"
+        self.listPrice.text     = "₦\(self.selectedDeal.listingPrice)"
+        self.save.text          = "₦\(self.selectedDeal.saving!)"
+        self.discount.text      = "\(self.selectedDeal.percentageDiscount!)%"
+        self.highlightWebView.loadHTMLString(self.selectedDeal.highlights, baseURL: nil)
+        self.finePirntWebview.loadHTMLString(self.selectedDeal.highlights, baseURL: nil)
+        self.descriptionWebView.loadHTMLString(self.selectedDeal.description, baseURL: nil)
+        
+        if selectedDeal.showTimer == true {
+            
+            self.count = selectedDeal.timeLeft!
+            var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimerLabel"), userInfo: nil, repeats: true)
+
+        }
         
     }
     
-
     
     private func timeLeft (seconds : Int) -> (Int, Int, Int, Int) {
         
-        var days = (seconds / 3600)/24
-        var hours = (seconds / 3600) % 24
-        var minutes = (seconds % 3600) / 60
-        var seconds = (seconds % 3600) % 60
+        let days = (seconds / Constants.Time.SecondsInAHour)/Constants.Time.HoursInADay
+        let hours = (seconds / Constants.Time.SecondsInAHour) % Constants.Time.HoursInADay
+        let minutes = (seconds % Constants.Time.SecondsInAHour) / Constants.Time.SecondsInADay
+        let seconds = (seconds % Constants.Time.SecondsInAHour) % Constants.Time.SecondsInADay
  
-        
         return (days, hours, minutes, seconds)
     }
-    
     
     
     func updateTimerLabel(){

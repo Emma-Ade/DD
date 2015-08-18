@@ -12,14 +12,16 @@ import Haneke
 
 class DealListTableViewController: UITableViewController {
     
-    var parentNavigationController : UINavigationController?
+    let api = APINetworking()
+    weak var parentNavigationController : UIViewController?
     var deals = [Deals]()
-    var api = APIController()
     var page = 1
-    var fullArr: NSMutableArray = []
+    var fetchedDeals: NSMutableArray = []
     var tableViewFooter : UIView?
     var footerActivityIndicator: UIActivityIndicatorView?
     var isLoading = false
+    var refresh = false
+    let limit = 10
     var dealDetailViewController: UIViewController!
     
     override func viewDidLoad() {
@@ -31,59 +33,70 @@ class DealListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        
+       MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         fetchDeals(page)
-        self.tableView.registerNib(UINib(nibName: "DealListTableViewCell", bundle: nil), forCellReuseIdentifier: "DealListTableViewCell")
         
         self.tableView.addPullToRefresh({ [weak self] in
             // some code
             sleep(1)
             
+            self?.page = 1
+            self?.refresh = true
             let cache = Shared.JSONCache
-            self?.fullArr = []
+            self?.fetchedDeals = []
             //cache.remove(key: urlstr)
             cache.removeAll()
-            self!.fetchDeals(1)
+            self!.fetchDeals(self!.page)
 
         })
-        
+      
     }
+
     
-    func fetchDeals(page: Int){
+    private func fetchDeals(page: Int){
         
-        api.getDeals(page){
+        api.cacheFetch(Constants.Url.Deals+"?per_page=\(self.limit)&page=\(self.page)&access_key=android-testing"){
             (response) in
             self.loadDeals(response["deals"]! as! NSArray)
             self.isLoading = false
         }
-
     }
     
-    func loadDeals(dealsList: NSArray){
+    
+    private func loadDeals(dealsList: NSArray){
         
-        self.fullArr.addObjectsFromArray(dealsList as [AnyObject])
-        self.deals = Deals.dealsWithJSON(self.fullArr)
-       
-        tableView.reloadData()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        self.fetchedDeals.addObjectsFromArray(dealsList as [AnyObject])
+        self.deals = Deals.DealsFromJSON(self.fetchedDeals)
+        
+        if !refresh {
+            
+            var tempArray: NSMutableArray = []
+            let count = self.tableView.numberOfRowsInSection(0)
+
+            for var i = count; i < self.fetchedDeals.count; i++ {
+                tempArray.addObject(NSIndexPath(forRow: i, inSection: 0))
+            }
+            
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths(tempArray as [AnyObject],withRowAnimation: .Automatic)
+            self.tableView.endUpdates()
+            
+        } else {
+            
+            self.tableView.reloadData()
+            self.refresh = false
+        }
+      
         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //println("\(self.title) page: viewWillAppear")
-    }
+
     
     override func viewDidAppear(animated: Bool) {
+        
         self.tableView.showsVerticalScrollIndicator = false
         super.viewDidAppear(animated)
         self.tableView.showsVerticalScrollIndicator = true
-        
-        //println("favorites page: viewDidAppear")
+
     }
 
     
@@ -93,12 +106,12 @@ class DealListTableViewController: UITableViewController {
     }
     
     
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
@@ -106,35 +119,21 @@ class DealListTableViewController: UITableViewController {
         return deals.count
     }
     
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell : DealListTableViewCell = tableView.dequeueReusableCellWithIdentifier("DealListTableViewCell") as! DealListTableViewCell
-        
         // Configure the cell...
-        let deal = self.deals[indexPath.row]
+       let deal = self.deals[indexPath.row]
         
-        cell.nameLabel.text = deal.short_title
-        cell.discountedPrice.text = "₦\(deal.discounted_price) "
-        cell.location.setTitle("\( deal.hover_location)", forState: UIControlState.Normal)
+        return DealListTableViewCell.loadCellForRow(indexPath.row, deal: deal, tableView: self.tableView)
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "₦\(deal.listing_price)")
-        attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
-        cell.listPrice.attributedText = attributeString
-
-        
-        let urlString = deal.image
-        if let escapedUrlString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-            
-                var imgURL: NSURL = NSURL(string: escapedUrlString)!
-                cell.photoImageView.hnk_setImageFromURL(imgURL)
-        }
-
-        return cell
     }
+    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 230
     }
+    
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
@@ -145,16 +144,26 @@ class DealListTableViewController: UITableViewController {
 
         if (indexPath.row ==  deals.count - 1 && !isLoading) {
             //load more records here
-            
             showFooterLoading()
             self.page += 1
             fetchDeals(page)
-            isLoading = true
+            self.isLoading = true
 
         }
-
     }
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+          parentNavigationController?.performSegueWithIdentifier("detail", sender: deals[indexPath.row])
+        
+        /*let selectedDeal = deals[indexPath.row]
+        let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DealDetailViewController") as! DealDetailViewController
+        detailViewController.deal = selectedDeal
+        detailViewController.hidesBottomBarWhenPushed = true
+        
+        self.parentNavigationController?.pushViewController(detailViewController, animated: true)*/
+        
+    }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         
@@ -162,25 +171,6 @@ class DealListTableViewController: UITableViewController {
         
     }
 
-
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-        var dealIndex = tableView.indexPathForSelectedRow()!.row
-        var selectedDeal = self.deals[dealIndex]
-        
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let dealDetailViewController = storyboard.instantiateViewControllerWithIdentifier("DealDetailViewController") as! DealDetailViewController
-        //self.dealDetailViewController = UINavigationController(rootViewController: dealDetailViewController)
-        
-        dealDetailViewController.deal = selectedDeal
-        dealDetailViewController.hidesBottomBarWhenPushed = true
-        parentNavigationController!.pushViewController(dealDetailViewController, animated: true)
-        
-    }
-    
-    
-    
     func showFooterLoading(){
         
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 25, 0)
@@ -189,8 +179,7 @@ class DealListTableViewController: UITableViewController {
         tableView.tableFooterView = tableViewFooter
 
         self.footerActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        self.footerActivityIndicator!.frame = CGRectMake(0, 0, 100, 100)
-        self.footerActivityIndicator!.center = CGPointMake(UIScreen.mainScreen().bounds.size.width/2, 0)
+        self.footerActivityIndicator!.center = CGPointMake(UIScreen.mainScreen().bounds.size.width/2, 13)
         self.footerActivityIndicator!.startAnimating()
         tableViewFooter!.addSubview( footerActivityIndicator! )
         

@@ -9,25 +9,32 @@
 import Foundation
 
 class Deals {
-    var id: Int
-    var short_title: String
-    var hover_location: String
-    var image: String
-    var discounted_price: String
-    var listing_price: String
     
-    init(id: Int, short_title: String, hover_location: String, image: String, discounted_price: String, listing_price: String){
+    let id: Int
+    let shortTitle: String
+    let discountedPrice: String
+    let listingPrice: String
+    var hoverLocation: String?
+    var image: String?
+    var highlights: String?
+    var finePrints: String?
+    var description: String?
+    var percentageDiscount: String?
+    var boughtCount: Int?
+    var saving: Int?
+    var showTimer: Bool?
+    var timeLeft: Int?
+    
+    init(id: Int, shortTitle: String, discountedPrice: String, listingPrice: String){
         
-        self.id                 = id
-        self.short_title        = short_title
-        self.hover_location     = hover_location
-        self.image              = image
-        self.discounted_price   = discounted_price
-        self.listing_price      = listing_price
+        self.id = id
+        self.shortTitle = shortTitle
+        self.discountedPrice    = discountedPrice
+        self.listingPrice   = listingPrice
     }
     
     
-    class func dealsWithJSON(allResults: NSArray) -> [Deals] {
+    class func DealsFromJSON(allResults: NSArray) -> [Deals] {
         
         // Create an empty array of Deals to append to from this list
         var deals = [Deals]()
@@ -37,18 +44,18 @@ class Deals {
             for result in allResults  {
                 
                 let id                  = result["id"] as? Int
-                let short_title         = result["short_title"] as? String
-                let hover_location      = result["hover_location"] as? String
+                let shortTitle         = result["short_title"] as? String
+                let hoverLocation      = result["hover_location"] as? String
                 let image               = result["image"] as? String
+                let least_priced_variant = result["least_priced_variant"]! as! NSDictionary
+                let discountedPrice: AnyObject    = least_priced_variant["discounted_price"]!
+                let listingPrice: AnyObject       = least_priced_variant["list_price"]!
+           
+                let newDeal = Deals(id: id! , shortTitle: shortTitle!, discountedPrice: toString(discountedPrice), listingPrice: toString(listingPrice) )
+                newDeal.hoverLocation = hoverLocation
+                newDeal.image = image
                 
-                var least_priced_variant = result["least_priced_variant"]! as! NSDictionary
-                let discounted_price: AnyObject    = least_priced_variant["discounted_price"]!
-                let listing_price: AnyObject       = least_priced_variant["list_price"]!
-                
-                
-                let newDeal = Deals(id: id! , short_title: short_title!, hover_location: hover_location!, image: image!, discounted_price: toString(discounted_price), listing_price: toString(listing_price) )
                 deals.append(newDeal)
-                
                 
             }
         }
@@ -56,4 +63,30 @@ class Deals {
     }
     
     
+    class func DealDetailsFromJSON(result: NSDictionary) -> Deals {
+        
+        let Id = result["id"]! as! Int
+        let shortTitle = result["short_title"]! as! String
+        let hightlights = result["highlights"]! as! String
+        let finePrints = result["fine_prints"]! as! String
+        let description = result["description"]! as! String
+        let percentageDiscount = result["percent_discount"]! as! String
+        let boughtCount = result["bought_count"]! as! Int
+        let listPrice: AnyObject = result["list_price"]!
+        let saving = result["saving"]! as! Int
+        let showTimer = result["show_timer"]! as! Bool
+        let timeLeft = result["time_left"]! as! Int
+        
+        let deal = Deals(id: Id, shortTitle: shortTitle, discountedPrice: percentageDiscount, listingPrice: listPrice.stringValue )
+        deal.highlights = hightlights
+        deal.finePrints = finePrints
+        deal.description = description
+        deal.percentageDiscount = percentageDiscount
+        deal.boughtCount = boughtCount
+        deal.saving = saving
+        deal.showTimer = showTimer
+        deal.timeLeft = timeLeft
+        
+        return deal
+    }
 }
