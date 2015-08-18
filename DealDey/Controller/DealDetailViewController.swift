@@ -1,10 +1,3 @@
-//
-//  DealDetailViewController.swift
-//  DealDey
-//
-//  Created by JOHN on 6/23/15.
-//  Copyright (c) 2015 Tinkona Technologies. All rights reserved.
-//
 
 import UIKit
 import SwiftyJSON
