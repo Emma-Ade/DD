@@ -124,8 +124,9 @@ class DealListTableViewController: UITableViewController {
         
         // Configure the cell...
        let deal = self.deals[indexPath.row]
+       let cell : DealListTableViewCell = tableView.dequeueReusableCellWithIdentifier("DealListTableViewCell") as! DealListTableViewCell
         
-        return DealListTableViewCell.loadCellForRow(indexPath.row, deal: deal, tableView: self.tableView)
+        return DealListTableViewCell.loadCellForRow(cell, deal: deal)
         
     }
     

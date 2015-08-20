@@ -12,12 +12,10 @@ class DealListTableViewCell: UITableViewCell {
 
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet weak var favoriteView: UIView!
     @IBOutlet weak var location: UIButton!
-    @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var discountedPrice: UILabel!
     @IBOutlet weak var listPrice: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var imageLoadActivityIndicator: UIActivityIndicatorView!
     
     
     override func prepareForReuse() {
@@ -26,10 +24,10 @@ class DealListTableViewCell: UITableViewCell {
     }
     
     
-    class func loadCellForRow(indexPath: Int, deal: Deals, tableView: UITableView) -> UITableViewCell {
+    class func loadCellForRow(cell: DealListTableViewCell, deal: Deals) -> DealListTableViewCell {
         
-        let cell : DealListTableViewCell = tableView.dequeueReusableCellWithIdentifier("DealListTableViewCell") as! DealListTableViewCell
-        
+        cell.imageLoadActivityIndicator.hidden = false
+        cell.imageLoadActivityIndicator.startAnimating()
         cell.nameLabel.text = deal.shortTitle
         cell.discountedPrice.text = "₦\(deal.discountedPrice) "
         cell.location.setTitle("\( deal.hoverLocation!)", forState: UIControlState.Normal)
@@ -42,8 +40,11 @@ class DealListTableViewCell: UITableViewCell {
         if let escapedUrlString = urlString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
             
             let imgURL: NSURL = NSURL(string: escapedUrlString)!
-            cell.photoImageView.hnk_setImageFromURL(imgURL)
-            cell.activityIndicator.stopAnimating()
+            //cell.photoImageView.hnk_setImageFromURL(imgURL)
+            cell.photoImageView.hnk_setImageFromURL(imgURL, success: { (image) -> () in
+                cell.imageLoadActivityIndicator.stopAnimating()
+                cell.photoImageView.image = image
+            })
         }
         
         return cell
